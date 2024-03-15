@@ -1,0 +1,37 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Workout {
+  id: Int!
+  registeredAt: DateTime!
+  updatedAt: DateTime!
+  name: String!
+  description: String!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Query {
+  workout(id: Int!): Workout!
+}
+
+type Mutation {
+  createWorkout(createWorkoutInput: CreateWorkoutInput!): Workout!
+  updateWorkout(updateWorkoutInput: UpdateWorkoutInput!): Workout!
+  removeWorkout(id: Int!): Workout!
+}
+
+input CreateWorkoutInput {
+  name: String!
+  description: String!
+}
+
+input UpdateWorkoutInput {
+  name: String
+  description: String
+  id: Int!
+}

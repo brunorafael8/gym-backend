@@ -1,11 +1,15 @@
 import { Injectable } from '@nestjs/common';
 import { CreateWorkoutInput } from './dto/create-workout.input';
 import { UpdateWorkoutInput } from './dto/update-workout.input';
+import { PrismaService } from 'src/database/prisma.service';
+import { Prisma } from '@prisma/client';
 
 @Injectable()
 export class WorkoutService {
-  create(createWorkoutInput: CreateWorkoutInput) {
-    return 'This action adds a new workout';
+  constructor(private prisma: PrismaService) {}
+
+  async create(createWorkoutInput: Prisma.WorkoutCreateInput) {
+   return this.prisma.workout.create({data: createWorkoutInput})
   }
 
   findAll() {
